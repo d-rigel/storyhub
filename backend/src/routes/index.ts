@@ -1,6 +1,7 @@
 import { Router } from 'express';
+import userRoutes from './user/user';
 
 const router = Router();
-// router.use("/secrets", SecretRouter);
+router.use('/users', userRoutes);
 
 export default router;

@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "commonjs",
-    "lib": ["es6"],
-    "allowJs": true,
     "outDir": "build",
     "rootDir": "src",
-    "strict": true,
-    "noImplicitAny": true,
+    "target": "es2016",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "module": "commonjs",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "skipLibCheck": true
   }
 }

@@ -1,22 +1,15 @@
-import mongoose from 'mongoose';
 import cors from 'cors';
 import morgan from 'morgan';
 import { NotFoundError, ApiError, InternalError } from './core/errorHandler';
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
+import initializeDb from './dbs/connectDB';
 
 dotenv.config();
-const { environment, mongoAppUrl } = require('./config');
+const { environment } = require('./config');
 
 const app = express();
 const baseUrl: string = '/api/v1';
-
-const initializeDb = async (): Promise<any> => {
-  mongoose.connect(mongoAppUrl, (err: any) => {
-    if (err) return console.log(err);
-    console.log('connected to database');
-  });
-};
 
 const initializeServer = async () => {
   await initializeDb();
@@ -30,7 +23,7 @@ const initializeServer = async () => {
     res.json({ status: 'Running' });
   });
 
-  app.use(`${baseUrl}`, require('./routes').default);
+  app.use(`${baseUrl}`, require('./routes/').default);
 
   // catch 404 and forward to error handler
   app.use((req: Request, res: Response, next: NextFunction) =>
