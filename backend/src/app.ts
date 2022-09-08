@@ -2,7 +2,9 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { NotFoundError, ApiError, InternalError } from './core/errorHandler';
 import express, { Request, Response, NextFunction } from 'express';
+import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import config from 'config';
 import initializeDb from './dbs/connectDB';
 
 dotenv.config();
@@ -13,11 +15,21 @@ const baseUrl: string = '/api/v1';
 
 const initializeServer = async () => {
   await initializeDb();
+
+  //Cookie Parser
+  app.use(cookieParser());
   //parses the request coming into json object
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use(cors());
+
   app.use(morgan('tiny'));
+
+  app.use(
+    cors({
+      origin: config.get<string>('origin'),
+      credentials: true
+    })
+  );
 
   app.get('/health', (req: Request, res: Response) => {
     res.json({ status: 'Running' });

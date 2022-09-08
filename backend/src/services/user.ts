@@ -1,54 +1,52 @@
+import { omit, get } from "lodash";
+import { FilterQuery, QueryOptions } from "mongoose";
+import config  from "config";
+import userModel, { User } from "../models/user"
+import { excludedFields } from "../controllers/auth";
+import { signJwt } from "../middleware/jwt";
+import redisClient from "../dbs/connectRedis";
+import { DocumentType } from "@typegoose/typegoose";
 
+// CreateUser service
+export const createUser = async (input: Partial<User>) => {
+    const user = await userModel.create(input);
+    return omit(user.toJSON(), excludedFields);
+  };
 
-// import { DocumentDefinition } from 'mongoose';
-// import UserModel, { I_UserDocument } from '../models/user';
-// import { validateInput } from '../utils/specValidator';
-// import { userCreateSchema } from '../validation-schema/user';
-// import bcrypt from 'bcrypt';
-// import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
+  // Find User by Id
+export const findUserById = async (id: string) => {
+    const user = await userModel.findById(id).lean();
+    return omit(user, excludedFields);
+  };
 
-// export const SECRET_KEY: Secret = 'sl_myjwtSecret';
+  // Find All users
+export const findAllUsers = async () => {
+    return await userModel.find();
+  };
 
-// export async function register(
-//   user: DocumentDefinition<I_UserDocument>
-// ): Promise<void | any> {
-//   try {
-//     const validateUser = await validateInput(userCreateSchema, user);
-//     await UserModel.create(validateUser);
-//   } catch (error) {
-//     throw error;
-//   }
-// }
+  // Find one user by any fields
+export const findUser = async (
+    query: FilterQuery<User>,
+    options: QueryOptions = {}
+  ) => {
+    return await userModel.findOne(query, {}, options).select('+password');
+  };
 
-// export async function login(user: DocumentDefinition<I_UserDocument>) {
-//   try {
-//     const foundUser = await UserModel.findOne({
-//       email: user.email,
-//       password: user.password
-//     });
-
-//     if (!foundUser) {
-//       throw new Error('Name of user is not correct');
-//     }
-
-//     const isMatch = bcrypt.compareSync(user.password, foundUser.password);
-//     if (isMatch) {
-//       const token = jwt.sign(
-//         { _id: foundUser._id?.toString(), email: foundUser.email },
-//         SECRET_KEY,
-//         {
-//           expiresIn: '2 days'
-//         }
-//       );
-
-//       // return { user: { _id, name }, token: token };
-//       return { user: { _id, name }, token: token };
-//     } else {
-//       throw new Error('Password is not correct');
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // Sign Token
+export const signToken = async (user: DocumentType<User>) => {
+    // Sign the access token
+    const access_token = signJwt(
+      { sub: user._id },
+      {
+        expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`,
+      }
+    );
+  
+    // Create a Session
+    redisClient.set(user._id, JSON.stringify(user), {
+      EX: 60 * 60,
+    });
+  
+    // Return access token
+    return { access_token };
+  };
