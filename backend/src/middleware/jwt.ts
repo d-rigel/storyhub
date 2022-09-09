@@ -7,6 +7,7 @@ export const signJwt = (payload: Object, options: SignOptions = {}) => {
     <string>accessTokenPrivateKey,
     'base64'
   ).toString('ascii');
+  
   return jwt.sign(payload, privateKey, {
     ...(options && options),
     algorithm: 'RS256'
@@ -19,6 +20,7 @@ export const verifyJwt = <T>(token: string): T | null => {
       <string>accessTokenPublicKey,
       'base64'
     ).toString('ascii');
+
     return jwt.verify(token, publicKey) as T;
   } catch (error) {
     return null;

@@ -6,21 +6,26 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import config from 'config';
 import initializeDb from './dbs/connectDB';
+import userRouter from './routes/user/user';
+import authRouter from './routes/auth/auth';
 
 dotenv.config();
 const { environment } = require('./config');
 
 const app = express();
-const baseUrl: string = '/api/v1';
+// const baseUrl: string = '/api/v1';
 
 const initializeServer = async () => {
   await initializeDb();
 
+  // 1. Body Parser
+  app.use(express.json({ limit: '10kb' }));
+
   //Cookie Parser
   app.use(cookieParser());
   //parses the request coming into json object
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
+  // app.use(express.urlencoded({ extended: true }));
+  // app.use(express.json());
 
   app.use(morgan('tiny'));
 
@@ -31,11 +36,15 @@ const initializeServer = async () => {
     })
   );
 
+  app.use('/api/users', userRouter);
+  app.use('/api/auth', authRouter);
+
+  // Testing
   app.get('/health', (req: Request, res: Response) => {
     res.json({ status: 'Running' });
   });
 
-  app.use(`${baseUrl}`, require('./routes/').default);
+  // app.use(`${baseUrl}`, require('./routes/').default);
 
   // catch 404 and forward to error handler
   app.use((req: Request, res: Response, next: NextFunction) =>
