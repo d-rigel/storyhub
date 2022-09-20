@@ -38,15 +38,17 @@ export const signToken = async (user: DocumentType<User>) => {
   const access_token = signJwt(
     { sub: user._id },
     {
-      // expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`,
-      expiresIn: '15m'
+      expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
+      // expiresIn: '15m'
     }
   );
 
   // Create a Session
   redisClient.set(user._id, JSON.stringify(user), {
     EX: 60 * 60
+    // NX: true
   });
+  // console.log('testing>>>', access_token);
 
   // Return access token
   return { access_token };

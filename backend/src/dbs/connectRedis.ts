@@ -1,8 +1,8 @@
-import { createClient } from "redis";
+import { createClient } from 'redis';
 
 const redisUrl = `redis://localhost:6379`;
 const redisClient = createClient({
-  url: redisUrl,
+  url: redisUrl
 });
 
 const connectRedis = async () => {

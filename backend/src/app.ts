@@ -1,3 +1,4 @@
+require('dotenv').config();
 import cors from 'cors';
 import morgan from 'morgan';
 import { NotFoundError, ApiError, InternalError } from './core/errorHandler';
@@ -9,7 +10,7 @@ import initializeDb from './dbs/connectDB';
 import userRouter from './routes/user/user';
 import authRouter from './routes/auth/auth';
 
-dotenv.config();
+// dotenv.config();
 const { environment } = require('./config');
 
 const app = express();

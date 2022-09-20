@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf ./build && tsc",
     "start:dev": "nodemon --exec ts-node src/server.ts",
-    "start": "npm run build && node build/server.js",
+    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
     "start:spawn": "nodemon --exec ts-node --respawn --transpile-only  src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
@@ -54,6 +54,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.4",
     "redis": "^4.3.0",
+    "ts-node-dev": "^2.0.0",
     "zod": "^3.18.0"
   }
 }
