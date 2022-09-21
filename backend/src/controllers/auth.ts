@@ -69,13 +69,13 @@ export const loginHandler = async (
 
     // Create an Access Token
     const { access_token } = await signToken(user);
-    console.log('accessToken>>>', access_token);
 
     // Send Access Token in Cookie
     res.cookie('accessToken', access_token, accessTokenCookieOptions);
     res.cookie('logged_in', true, {
       ...accessTokenCookieOptions,
       httpOnly: false
+      // secure: false //incl
     });
 
     // Send Access Token

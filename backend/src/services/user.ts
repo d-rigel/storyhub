@@ -6,6 +6,7 @@ import { excludedFields } from '../controllers/auth';
 import { signJwt } from '../middleware/jwt';
 import redisClient from '../dbs/connectRedis';
 import { DocumentType } from '@typegoose/typegoose';
+import { callbackify } from 'util';
 
 // CreateUser service
 export const createUser = async (input: Partial<User>) => {
@@ -38,8 +39,8 @@ export const signToken = async (user: DocumentType<User>) => {
   const access_token = signJwt(
     { sub: user._id },
     {
-      expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
-      // expiresIn: '15m'
+      // expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
+      expiresIn: '15m'
     }
   );
 
@@ -48,7 +49,6 @@ export const signToken = async (user: DocumentType<User>) => {
     EX: 60 * 60
     // NX: true
   });
-  // console.log('testing>>>', access_token);
 
   // Return access token
   return { access_token };

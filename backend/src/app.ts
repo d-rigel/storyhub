@@ -28,7 +28,10 @@ const initializeServer = async () => {
   // app.use(express.urlencoded({ extended: true }));
   // app.use(express.json());
 
-  app.use(morgan('tiny'));
+  // app.use(morgan('tiny'));
+
+  // Logger
+  if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
   app.use(
     cors({
@@ -45,25 +48,43 @@ const initializeServer = async () => {
     res.json({ status: 'Running' });
   });
 
+  // UnKnown Routes
+  app.all('*', (req: Request, res: Response, next: NextFunction) => {
+    const err = new Error(`Route ${req.originalUrl} not found`) as any;
+    err.statusCode = 404;
+    next(err);
+  });
+
+  // Global Error Handler
+  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+    err.status = err.status || 'error';
+    err.statusCode = err.statusCode || 500;
+
+    res.status(err.statusCode).json({
+      status: err.status,
+      message: err.message
+    });
+  });
+
   // app.use(`${baseUrl}`, require('./routes/').default);
 
-  // catch 404 and forward to error handler
-  app.use((req: Request, res: Response, next: NextFunction) =>
-    next(new NotFoundError())
-  );
+  // // catch 404 and forward to error handler
+  // app.use((req: Request, res: Response, next: NextFunction) =>
+  //   next(new NotFoundError())
+  // );
 
-  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if (err instanceof ApiError) {
-      return ApiError.handle(err, res);
-    }
+  // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  //   if (err instanceof ApiError) {
+  //     return ApiError.handle(err, res);
+  //   }
 
-    if (environment === 'development') {
-      console.log(err);
-      return res.status(500).send('Something went wrong');
-    }
+  //   if (environment === 'development') {
+  //     console.log(err);
+  //     return res.status(500).send('Something went wrong');
+  //   }
 
-    ApiError.handle(new InternalError(), res);
-  });
+  //   ApiError.handle(new InternalError(), res);
+  // });
 };
 
 initializeServer();
