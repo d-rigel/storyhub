@@ -9,8 +9,8 @@ const accessPublic: string =
 
 export const signJwt = (payload: Object, options: SignOptions = {}) => {
   const privateKey = Buffer.from(
-    // <string>accessTokenPrivateKey,
-    accessPriv,
+    <string>accessTokenPrivateKey,
+    // accessPriv,
 
     // config.get<string>('accessTokenPrivateKey'),
     'base64'
@@ -25,9 +25,9 @@ export const signJwt = (payload: Object, options: SignOptions = {}) => {
 export const verifyJwt = <T>(token: string): T | null => {
   try {
     const publicKey = Buffer.from(
-      // <string>accessTokenPublicKey,
+      <string>accessTokenPublicKey,
       // config.get<string>('accessTokenPublicKey'),
-      accessPublic,
+      // accessPublic,
       'base64'
     ).toString('ascii');
 

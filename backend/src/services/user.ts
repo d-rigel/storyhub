@@ -39,8 +39,8 @@ export const signToken = async (user: DocumentType<User>) => {
   const access_token = signJwt(
     { sub: user._id },
     {
-      // expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
-      expiresIn: '15m'
+      expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
+      // expiresIn: '15m'
     }
   );
 
