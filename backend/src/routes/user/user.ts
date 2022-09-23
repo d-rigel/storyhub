@@ -1,59 +1,19 @@
-import express from "express"
-import { getAllUsersHandler, getMeHandler } from "../../controllers/user"
-import { deserializeUser } from "../../middleware/deserializeUser"
-import { requireUser } from "../../middleware/requireUser"
-import { restrictTo } from "../../middleware/restrictTo"
+import express from 'express';
+import { getAllUsersHandler, getMeHandler } from '../../controllers/user';
+import { deserializeUser } from '../../middleware/deserializeUser';
+import { requireUser } from '../../middleware/requireUser';
+import { restrictTo } from '../../middleware/restrictTo';
 
-const router = express.Router()
-router.use(deserializeUser, requireUser)
+const router = express.Router();
+router.use(deserializeUser, requireUser);
 
 // Admin Get Users route
-router.get("/", restrictTo("admin"), getAllUsersHandler)
+router.get('/', restrictTo('admin'), getAllUsersHandler);
 
 //Get my info route
-router.get("/me", getMeHandler)
+router.get('/me', getMeHandler);
 
-export default router
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default router;
 
 // import { Router, Response } from 'express';
 // // import asyncHandler from '../../utils/asyncHandler';

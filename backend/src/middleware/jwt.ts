@@ -1,13 +1,16 @@
 import jwt, { SignOptions } from 'jsonwebtoken';
 import config from 'config';
-const { accessTokenPrivateKey, accessTokenPublicKey } = require('../config');
+// const { accessTokenPrivateKey, accessTokenPublicKey, "refreshTokenPrivate, refereshTokenPublic } = require('../config');
 
-export const signJwt = (payload: Object, options: SignOptions = {}) => {
+export const signJwt = (
+  payload: Object,
+  key: 'accessTokenPrivateKey' | 'refreshTokenPrivateKey',
+  options: SignOptions = {}
+) => {
   const privateKey = Buffer.from(
-    <string>accessTokenPrivateKey,
-    // accessPriv,
+    // <string>accessTokenPrivateKey,
 
-    // config.get<string>('accessTokenPrivateKey'),
+    config.get<string>(key),
     'base64'
   ).toString('ascii');
 
@@ -17,12 +20,16 @@ export const signJwt = (payload: Object, options: SignOptions = {}) => {
   });
 };
 
-export const verifyJwt = <T>(token: string): T | null => {
+export const verifyJwt = <T>(
+  token: string,
+  key: 'accessTokenPublicKey' | 'refereshTokenPublicKey'
+): T | null => {
   try {
     const publicKey = Buffer.from(
-      <string>accessTokenPublicKey,
-      // config.get<string>('accessTokenPublicKey'),
-      // accessPublic,
+      // <string>accessTokenPublicKey,
+
+      config.get<string>(key),
+
       'base64'
     ).toString('ascii');
 

@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import AppError from "../utils/appError";
+import { NextFunction, Request, Response } from 'express';
+import AppError from '../utils/appError';
 
 export const restrictTo =
   (...allowedRoles: string[]) =>
@@ -13,4 +13,3 @@ export const restrictTo =
 
     next();
   };
-

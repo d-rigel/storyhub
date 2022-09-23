@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { port } from './config';
 import app from './app';
 
