@@ -85,7 +85,7 @@ export const loginHandler = async (
 
     // Send Access Token in Cookie
     res.cookie('accessToken', access_token, accessTokenCookieOptions);
-    res.cookie('accessToken', refresh_token, refereshTokenCookieOptions);
+    res.cookie('refresh_token', refresh_token, refereshTokenCookieOptions);
     res.cookie('logged_in', true, {
       ...accessTokenCookieOptions,
       httpOnly: false
@@ -125,6 +125,7 @@ export const refreshAccessTokenHandler = async (
       refresh_token,
       'refereshTokenPublicKey'
     );
+
     const message = 'Could not refresh access token';
     if (!decoded) {
       return next(new AppError(message, 403));

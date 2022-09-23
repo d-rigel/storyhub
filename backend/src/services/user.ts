@@ -43,7 +43,7 @@ export const signToken = async (user: DocumentType<User>) => {
 
   // Sign the refresh token
   const refresh_token = signJwt({ sub: user._id }, 'refreshTokenPrivateKey', {
-    expiresIn: `${config.get<number>('accessTokenExpiresIn')}m`
+    expiresIn: `${config.get<number>('refreshTokenExpiresIn')}m`
     // expiresIn: '15m'
   });
 
