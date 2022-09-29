@@ -8,5 +8,10 @@ export default {
   accessTokenPrivateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY,
   accessTokenPublicKey: process.env.ACCESS_TOKEN_PUBLIC_KEY,
   refreshTokenPrivateKey: process.env.REFRESH_TOKEN_PRIVATE_KEY,
-  refereshTokenPublicKey: process.env.REFRESH_TOKEN_PUBLIC_KEY
+  refereshTokenPublicKey: process.env.REFRESH_TOKEN_PUBLIC_KEY,
+
+  googleClientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
+  googleClientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+  googleOauthRedirect: process.env.GOOGLE_OAUTH_REDIRECT_URL
 };
+ 
