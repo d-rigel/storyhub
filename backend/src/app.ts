@@ -9,6 +9,7 @@ import config from 'config';
 import initializeDb from './dbs/connectDB';
 import userRouter from './routes/user/user';
 import authRouter from './routes/auth/auth';
+import sessionRouter from './routes/session/session';
 
 // dotenv.config();
 const { environment } = require('./config');
@@ -42,6 +43,7 @@ const initializeServer = async () => {
 
   app.use('/api/users', userRouter);
   app.use('/api/auth', authRouter);
+  app.use('/api/sessions', sessionRouter);
 
   // Testing
   app.get('/health', (req: Request, res: Response) => {

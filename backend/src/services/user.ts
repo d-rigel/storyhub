@@ -1,5 +1,5 @@
 import { omit, get } from 'lodash';
-import { FilterQuery, QueryOptions } from 'mongoose';
+import { FilterQuery, QueryOptions, UpdateQuery } from 'mongoose';
 import config from 'config';
 import userModel, { User } from '../models/user';
 import { excludedFields } from '../controllers/auth';
@@ -31,6 +31,15 @@ export const findUser = async (
   options: QueryOptions = {}
 ) => {
   return await userModel.findOne(query, {}, options).select('+password');
+};
+
+// google oauth, update user info in db
+export const findAndUpdateUser = async (
+  query: FilterQuery<User>,
+  update: UpdateQuery<User>,
+  options: QueryOptions
+) => {
+  return await userModel.findOneAndUpdate(query, update, options);
 };
 
 // Sign Token
