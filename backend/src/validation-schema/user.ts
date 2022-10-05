@@ -28,8 +28,19 @@ export const loginUserSchema = object({
   })
 });
 
+// ..................................................
+export const forgotPasswordSchema = object({
+  body: object({
+    email: string({
+      required_error: 'Email is required'
+    }).email('Invalid email')
+  })
+});
+
 // export type CreateUserInput = TypeOf<typeof createuserschema="">['body'];
 // export type LoginUserInput = TypeOf<typeof loginuserschema="">['body'];
 
 export type CreateUserInput = TypeOf<typeof createUserSchema>['body'];
 export type LoginUserInput = TypeOf<typeof loginUserSchema>['body'];
+// .........................................................
+export type ForgetPasswordInput = TypeOf<typeof forgotPasswordSchema>['body'];

@@ -6,7 +6,7 @@ import { excludedFields } from '../controllers/auth';
 import { signJwt } from '../middleware/jwt';
 import redisClient from '../dbs/connectRedis';
 import { DocumentType } from '@typegoose/typegoose';
-import { callbackify } from 'util';
+
 
 // CreateUser service
 export const createUser = async (input: Partial<User>) => {

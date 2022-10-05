@@ -7,6 +7,7 @@ import {
   prop
 } from '@typegoose/typegoose';
 import bcrypt from 'bcrypt';
+import { nanoid } from 'nanoid';
 
 @index({ email: 1 })
 @pre<User>('save', async function () {
@@ -37,7 +38,6 @@ export class User {
   @prop({ default: 'user' })
   role: string;
 
-  
   @prop({ default: 'default.png' })
   photo: string;
 
@@ -47,6 +47,12 @@ export class User {
   @prop({ default: 'local' })
   provider: string;
 
+  // ....................
+  @prop({ required: true, default: () => nanoid() })
+  verificationCode: string;
+
+  @prop()
+  passwordResetCode: string | null;
 
   // Instance method to check if passwords match
   async comparePasswords(hashedPassword: string, candidatePassword: string) {

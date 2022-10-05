@@ -7,12 +7,18 @@ import {
   findUserById,
   findAndUpdateUser
 } from '../services/user';
-import { CreateUserInput, LoginUserInput } from '../validation-schema/user';
+import {
+  CreateUserInput,
+  LoginUserInput,
+  ForgetPasswordInput
+} from '../validation-schema/user';
 import AppError from '../utils/appError';
 import { signJwt, verifyJwt } from '../middleware/jwt';
 import redisClient from '../dbs/connectRedis';
 import { getGoogleOauthToken, getGoogleUser } from '../services/session';
-
+import log from '../utils/logger';
+import sendEmail from '../utils/mailer';
+import { nanoid } from 'nanoid';
 // Exclude this fields from the response
 export const excludedFields = ['password'];
 
@@ -249,3 +255,43 @@ export const googleOauthHandler = async (
     return res.redirect(`${config.get<string>('origin')}/oauth/error`);
   }
 };
+
+// ...........................................................
+export const forgetPasswordHandler = async (
+  req: Request<{}, {}, ForgetPasswordInput>,
+  res: Response,
+) => {
+  const message =
+    'If a user with that email is registered you will receive a password reset email';
+
+  const { email } = req.body;
+  const user = await findUser({ email: req.body.email });
+
+  if (!user) {
+    log.debug(`User with email ${email} does not exists`);
+    return res.send(message);
+  }
+
+  // if (!user.verified) {
+  //   return res.send("User is not verified");
+  // }
+
+  const passwordResetCode = nanoid();
+
+  user.passwordResetCode = passwordResetCode;
+
+  await user.save();
+
+  await sendEmail({
+    to: user.email,
+    from: 'info@ethereal.email',
+    subject: 'Reset your password',
+    text: `Password reset code: ${passwordResetCode}. Id ${user._id}`
+  });
+
+  log.debug(`Password reset email sent to ${email}`);
+
+  return res.send(message);
+};
+
+// ...........................................................

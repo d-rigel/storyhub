@@ -12,6 +12,14 @@ export default {
 
   googleClientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
   googleClientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-  googleOauthRedirect: process.env.GOOGLE_OAUTH_REDIRECT_URL
+  googleOauthRedirect: process.env.GOOGLE_OAUTH_REDIRECT_URL,
+
+  smtp: {
+    user: 'jaquelin.morar@ethereal.email',
+    pass: 'DYswFenZgMZRRQpRPT',
+    host: 'smtp.ethereal.email',
+    port: 587,
+    secure: false
+  },
+  logLevel: 'info'
 };
- 
