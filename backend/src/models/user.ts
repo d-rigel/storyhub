@@ -32,7 +32,7 @@ export class User {
   @prop({ unique: true, required: true })
   email: string;
 
-  @prop({ required: true, minlength: 8, maxlength: 32, select: false })
+  @prop({ required: true, minlength: 8, maxlength: 100, select: false })
   password: string;
 
   @prop({ default: 'user' })

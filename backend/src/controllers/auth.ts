@@ -260,38 +260,50 @@ export const googleOauthHandler = async (
 export const forgetPasswordHandler = async (
   req: Request<{}, {}, ForgetPasswordInput>,
   res: Response,
+  next: NextFunction
 ) => {
-  const message =
-    'If a user with that email is registered you will receive a password reset email';
+  try {
+    const message =
+      'If a user with that email is registered you will receive a password reset email';
 
-  const { email } = req.body;
-  const user = await findUser({ email: req.body.email });
+    const { email } = req.body;
+    const user = await findUser({ email: req.body.email });
 
-  if (!user) {
-    log.debug(`User with email ${email} does not exists`);
-    return res.send(message);
+    if (!user) {
+      return next(
+        new AppError(`User with email ${email} does not exists`, 403)
+      );
+    }
+
+    // if (!user.verified) {
+    //   return res.send("User is not verified");
+    // }
+
+    const passwordResetCode = nanoid();
+
+    user.passwordResetCode = passwordResetCode;
+
+    await user.save();
+
+    await sendEmail({
+      to: user.email,
+      from: 'flavie.abshire1@ethereal.email',
+      subject: 'Reset your password',
+      text: `Password reset code: ${passwordResetCode}. Id ${user._id}`
+    });
+
+    res.json({
+      status: 'success',
+      message: `Password reset email sent to ${email}, if it exists in our database `
+    });
+
+    return res.json({
+      status: 'success',
+      message: message
+    });
+  } catch (err: any) {
+    next(err);
   }
-
-  // if (!user.verified) {
-  //   return res.send("User is not verified");
-  // }
-
-  const passwordResetCode = nanoid();
-
-  user.passwordResetCode = passwordResetCode;
-
-  await user.save();
-
-  await sendEmail({
-    to: user.email,
-    from: 'info@ethereal.email',
-    subject: 'Reset your password',
-    text: `Password reset code: ${passwordResetCode}. Id ${user._id}`
-  });
-
-  log.debug(`Password reset email sent to ${email}`);
-
-  return res.send(message);
 };
 
 // ...........................................................
