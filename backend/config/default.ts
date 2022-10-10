@@ -15,8 +15,8 @@ export default {
   googleOauthRedirect: process.env.GOOGLE_OAUTH_REDIRECT_URL,
 
   smtp: {
-    user: 'flavie.abshire1@ethereal.email',
-    pass: '7zTzg6QrUze135gFwf',
+    user: 'ezekiel.heathcote91@ethereal.email',
+    pass: 'PHF7qyz8Q3PR49FSwr',
     host: 'smtp.ethereal.email',
     port: 587,
     secure: false

@@ -10,7 +10,8 @@ import {
 import {
   CreateUserInput,
   LoginUserInput,
-  ForgetPasswordInput
+  ForgetPasswordInput,
+  ResetPasswordInput
 } from '../validation-schema/user';
 import AppError from '../utils/appError';
 import { signJwt, verifyJwt } from '../middleware/jwt';
@@ -263,8 +264,8 @@ export const forgetPasswordHandler = async (
   next: NextFunction
 ) => {
   try {
-    const message =
-      'If a user with that email is registered you will receive a password reset email';
+    // const message =
+    //   'If a user with that email is registered you will receive a password reset email';
 
     const { email } = req.body;
     const user = await findUser({ email: req.body.email });
@@ -287,23 +288,56 @@ export const forgetPasswordHandler = async (
 
     await sendEmail({
       to: user.email,
-      from: 'flavie.abshire1@ethereal.email',
+      from: 'ezekiel.heathcote91@ethereal.email',
       subject: 'Reset your password',
-      text: `Password reset code: ${passwordResetCode}. Id ${user._id}`
+      text: `Password reset code: ${passwordResetCode} | id: ${user._id}`
     });
 
     res.json({
       status: 'success',
-      message: `Password reset email sent to ${email}, if it exists in our database `
-    });
-
-    return res.json({
-      status: 'success',
-      message: message
+      message: `Password reset email sent to ${email} if it exists in our database `
     });
   } catch (err: any) {
     next(err);
   }
 };
+
+export async function resetPasswordHandler(
+  req: Request<ResetPasswordInput['params'], {}, ResetPasswordInput['body']>,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const { id, passwordResetCode } = req.params;
+
+    const { password } = req.body;
+
+    // const user = await findUserById(id);
+    const user = await findUser({ id: req.params.id });
+
+    if (
+      !user ||
+      !user.passwordResetCode ||
+      user.passwordResetCode !== passwordResetCode
+    ) {
+      // return res.status(400).send('Could not reset user password');
+      return next(new AppError(`Could not reset user password`, 400));
+    }
+
+    user.passwordResetCode = null;
+
+    user.password = password;
+
+    await user.save();
+
+    // return res.send('Successfully updated password');
+    res.json({
+      status: 'success',
+      message: `Successfully updated password `
+    });
+  } catch (err: any) {
+    next(err);
+  }
+}
 
 // ...........................................................

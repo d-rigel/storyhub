@@ -4,7 +4,8 @@ import {
   logoutHandler,
   registerHandler,
   refreshAccessTokenHandler,
-  forgetPasswordHandler
+  forgetPasswordHandler,
+  resetPasswordHandler
 } from '../../controllers/auth';
 import { requireUser } from '../../middleware/requireUser';
 import { deserializeUser } from '../../middleware/deserializeUser';
@@ -12,7 +13,8 @@ import { validate } from '../../utils/specValidator';
 import {
   createUserSchema,
   loginUserSchema,
-  forgotPasswordSchema
+  forgotPasswordSchema,
+  resetPasswordSchema
 } from '../../validation-schema/user';
 
 const router = express.Router();
@@ -28,6 +30,12 @@ router.post(
   '/forgotpassword',
   validate(forgotPasswordSchema),
   forgetPasswordHandler
+);
+
+router.post(
+  '/resetpassword/:id/:passwordResetCode',
+  validate(resetPasswordSchema),
+  resetPasswordHandler
 );
 
 // ............................................................
