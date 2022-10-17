@@ -56,7 +56,7 @@ const initializeServer = async () => {
   app.use('/api/users', userRouter);
   app.use('/api/auth', authRouter);
   app.use('/api/sessions', sessionRouter);
-  app.use('/api/story', storyRouter);
+  app.use('/api/stories', storyRouter);
 
   // Testing
   app.get('/health', (req: Request, res: Response) => {

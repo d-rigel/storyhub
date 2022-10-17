@@ -1,6 +1,7 @@
-import { createStory } from '../services/story';
+import { createStory, findAllStory } from '../services/story';
 import { NextFunction, Request, Response } from 'express';
 import { CreateStoryInput } from '../validation-schema/story';
+import { Story } from '../models/story';
 
 export const createStoryHandler = async (
   req: Request<{}, {}, CreateStoryInput>,
@@ -22,6 +23,25 @@ export const createStoryHandler = async (
       status: 'success',
       data: {
         story
+      }
+    });
+  } catch (err: any) {
+    next(err);
+  }
+};
+
+export const getStoryHandler = async (
+  req: Request<{}, {}, CreateStoryInput>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const stories = await findAllStory();
+    res.status(200).json({
+      status: 'success',
+      // result: stories
+      data: {
+        stories
       }
     });
   } catch (err: any) {
