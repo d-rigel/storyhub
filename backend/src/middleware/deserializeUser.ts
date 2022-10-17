@@ -10,6 +10,8 @@ export const deserializeUser = async (
   next: NextFunction
 ) => {
   try {
+    const { authorization } = req.headers;
+    console.log('cust authorization>>>>', authorization);
     // Get the token
     let access_token;
     if (
@@ -44,6 +46,13 @@ export const deserializeUser = async (
 
     // Check if user still exist
     const user = await findUserById(JSON.parse(session)._id);
+    console.log('user>>>', user);
+
+    // // let userId;
+    // if (user) {
+    //   // userId = user;
+    //   req.userId = user;
+    // }
 
     if (!user) {
       return next(new AppError(`User with that token no longer exist`, 401));

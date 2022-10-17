@@ -10,6 +10,7 @@ import initializeDb from './dbs/connectDB';
 import userRouter from './routes/user/user';
 import authRouter from './routes/auth/auth';
 import sessionRouter from './routes/session/session';
+import storyRouter from './routes/story/story';
 
 // dotenv.config();
 const { environment } = require('./config');
@@ -41,9 +42,21 @@ const initializeServer = async () => {
     })
   );
 
+  // ...................
+
+  //set global variable
+  // app.use(function (req: Request, res: Response, next: NextFunction) {
+  //   res.locals.user = req.user || null;
+  //   console.log('checking>>', req);
+  //   next();
+  // });
+
+  // ..........................................
+
   app.use('/api/users', userRouter);
   app.use('/api/auth', authRouter);
   app.use('/api/sessions', sessionRouter);
+  app.use('/api/story', storyRouter);
 
   // Testing
   app.get('/health', (req: Request, res: Response) => {
@@ -67,26 +80,6 @@ const initializeServer = async () => {
       message: err.message
     });
   });
-
-  // app.use(`${baseUrl}`, require('./routes/').default);
-
-  // // catch 404 and forward to error handler
-  // app.use((req: Request, res: Response, next: NextFunction) =>
-  //   next(new NotFoundError())
-  // );
-
-  // app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  //   if (err instanceof ApiError) {
-  //     return ApiError.handle(err, res);
-  //   }
-
-  //   if (environment === 'development') {
-  //     console.log(err);
-  //     return res.status(500).send('Something went wrong');
-  //   }
-
-  //   ApiError.handle(new InternalError(), res);
-  // });
 };
 
 initializeServer();

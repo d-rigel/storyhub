@@ -51,7 +51,7 @@ export class User {
   @prop({ required: true, default: () => nanoid() })
   verificationCode: string;
 
-  @prop({ expires: '3m', index: true })
+  @prop()
   passwordResetCode: string | null;
 
   // Instance method to check if passwords match

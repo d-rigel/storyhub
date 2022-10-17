@@ -7,7 +7,6 @@ import { signJwt } from '../middleware/jwt';
 import redisClient from '../dbs/connectRedis';
 import { DocumentType } from '@typegoose/typegoose';
 
-
 // CreateUser service
 export const createUser = async (input: Partial<User>) => {
   const user = await userModel.create(input);
