@@ -24,9 +24,11 @@ export const createStoryHandler = async (
       title: req.body.title,
       story: req.body.story,
       status: req.body.status,
-      user: user._id
+      user: user
       // user: req.user
     });
+
+    // const story = await createStory(req.body);
 
     res.status(201).json({
       status: 'success',
@@ -90,17 +92,20 @@ export const updateStoryHandler = async (
   next: NextFunction
 ) => {
   try {
+    const user = res.locals.user;
     const { id } = req.params;
     const story = await findAndUpdateStory(
       { id },
+      // req.body,
       {
         title: req.body.title,
         story: req.body.story,
-        status: req.body.status
-        // user: user._id
+        status: req.body.status,
+        user: user
       },
+
       // { runValidators: true, new: true }
-      { runValidators: true, new: true, lean: true }
+      { upsert: false, runValidators: true, new: true, lean: true }
     );
 
     if (!story) {
@@ -108,7 +113,7 @@ export const updateStoryHandler = async (
     }
 
     res.status(200).json({
-      message: 'story updated',
+      message: 'story updated!!!',
       data: {
         story
       }

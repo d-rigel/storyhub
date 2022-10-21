@@ -6,6 +6,7 @@ import {
   prop
 } from '@typegoose/typegoose';
 import { User } from './user';
+import mongoose from 'mongoose';
 
 enum Status {
   public = 'public',
@@ -22,16 +23,18 @@ enum Status {
 @index({ title: 1 })
 export class Story {
   @prop({ required: true, trim: true })
-  title: string;
+  public title?: string;
 
   @prop({ required: true })
-  story: string;
+  public story?: string;
 
   @prop({ type: () => String, default: 'public', enum: Object.values(Status) })
-  status: string;
+  public status?: string;
 
+  // @prop({ ref: () => User })
+  // user?: Ref<User>;
   @prop({ ref: () => User })
-  user?: Ref<User>;
+  public user?: Ref<User>;
 }
 
 // create the story model from the Story class
