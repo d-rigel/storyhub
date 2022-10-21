@@ -308,7 +308,7 @@ export async function resetPasswordHandler(
   next: NextFunction
 ) {
   try {
-    const { id, passwordResetCode } = req.params;
+    const { passwordResetCode } = req.params;
 
     const { password } = req.body;
 

@@ -7,8 +7,14 @@ export const createStorySchema = object({
       .min(8, 'Story must be more than 8 characters')
       .max(100, 'Story must be less than 100 characters'),
     status: string({ required_error: 'Status is required' })
-    // user: string({ required_error: 'User is required' })
+  })
+});
+
+export const paramsSchema = object({
+  params: object({
+    id: string()
   })
 });
 
 export type CreateStoryInput = TypeOf<typeof createStorySchema>['body'];
+export type CreateStoryParams = TypeOf<typeof paramsSchema>;
