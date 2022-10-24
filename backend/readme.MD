@@ -24,3 +24,14 @@
 | 6   | "/api/sessions/oauth/google"     | GET   | Done     | no         | Google oauth endpoint                  |
 | 7   | "/api/auth/forgotpassword"       | POST  | done     | no         | User request for new password          |
 | 8   | "api/auth/resetpassword/:id/:pin | POST  | done     | yes        | User update password                   |
+
+### stories API router
+
+| #   | Routers                 | Verbs  | Progress | Is Private | Description                                 |
+| --- | ----------------------- | ------ | -------- | ---------- | ------------------------------------------- |
+| 1   | "/api/stories/publish"  | POST   | Done     | yes        | Create a new story by a registered user     |
+| 2   | "/api/stories"          | GET    | Done     | yes        | Get all public stories by a registered user |
+| 3   | "/api/stories/:id"      | GET    | Done     | yes        | Get a single story by a registered user     |
+| 4   | "/api/stories/:id"      | PUT    | Done     | yes        | Update a single story...                    |
+| 5   | "/api/stories/:id"      | DELETE | Done     | yes        | Delete a single story...                    |
+| 6   | "/api/stories/user/:id" | GET    | Done     | yes        | Get all public stories by a particular user |
