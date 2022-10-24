@@ -1,3 +1,5 @@
+<!-- http://localhost:6000/api/stories -->
+
 ### 1. Node.js + TypeScript + MongoDB: JWT Authentication
 
 [Node.js + TypeScript + MongoDB: JWT Authentication]
