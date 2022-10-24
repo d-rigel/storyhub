@@ -31,3 +31,18 @@ export const findAndUpdateStory = async (
 ) => {
   return await storyModel.findOneAndUpdate(query, update, options);
 };
+
+// delete a story by Id
+export const deleteStory = async (id: string) => {
+  const story = await storyModel.remove({ _id: id });
+  return omit(story);
+};
+
+// Find All stories for a particular user ---public
+export const findUserStory = async (id: string) => {
+  return await storyModel
+    .find({ user: id, status: 'public' })
+    .populate('user')
+    .sort({ createdAt: 'desc' })
+    .lean();
+};

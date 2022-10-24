@@ -3,7 +3,9 @@ import {
   createStoryHandler,
   getStoryHandler,
   getStoryByIdHanlder,
-  updateStoryHandler
+  updateStoryHandler,
+  removeStoryByIdHanlder,
+  getStoryByOneUserHanlder
 } from '../../controllers/story';
 import { validate } from '../../utils/specValidator';
 import { createStorySchema } from '../../validation-schema/story';
@@ -26,5 +28,11 @@ router.get('/:id', getStoryByIdHanlder);
 
 // Update a particular story
 router.put('/:id', updateStoryHandler);
+
+// Delete a particular story
+router.delete('/:id', removeStoryByIdHanlder);
+
+// Get all stories  route
+router.get('/user/:id', getStoryByOneUserHanlder);
 
 export default router;
