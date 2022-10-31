@@ -32,8 +32,8 @@ export class Story {
   public status?: string;
 
   // @prop({ ref: () => User })
-  // user?: Ref<User>;
-  @prop({ ref: () => User })
+  // public user?: Ref<User>;
+  @prop({ ref: 'User' })
   public user?: Ref<User>;
 }
 

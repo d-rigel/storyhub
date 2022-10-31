@@ -4,11 +4,15 @@ import {
   index,
   modelOptions,
   pre,
-  prop
+  prop,
+  setGlobalOptions,
+  Severity
 } from '@typegoose/typegoose';
 import bcrypt from 'bcrypt';
 import { nanoid } from 'nanoid';
 
+// setLogLevel(LogLevels.INFO),
+setGlobalOptions({ options: { allowMixed: Severity.ALLOW } });
 @index({ email: 1 })
 @pre<User>('save', async function () {
   // Hash password if the password is new or was updated

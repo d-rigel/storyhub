@@ -1,8 +1,10 @@
+require('dotenv').config();
 export default {
   port: 8000,
   accessTokenExpiresIn: 15,
   refreshTokenExpiresIn: 59,
   origin: 'http://localhost:3000',
+  // origin: process.env.ORIGIN,
   // accessTokenPrivateKey: 'ACCESS_TOKEN_PRIVATE_KEY',
   // accessTokenPublicKey: 'ACCESS_TOKEN_PUBLIC_KEY'
   accessTokenPrivateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY,
@@ -21,5 +23,8 @@ export default {
     port: 587,
     secure: false
   },
-  logLevel: 'info'
+  logLevel: 'info',
+
+  mongoAppUrl: `mongodb://${process.env.MONGO_LOCAL_PORT}/${process.env.MONGO_LOCAL_NAME}`,
+  environment: process.env.NODE_ENV
 };

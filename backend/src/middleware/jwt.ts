@@ -5,6 +5,7 @@ import config from 'config';
 export const signJwt = (
   payload: Object,
   key: 'accessTokenPrivateKey' | 'refreshTokenPrivateKey',
+
   options: SignOptions = {}
 ) => {
   const privateKey = Buffer.from(

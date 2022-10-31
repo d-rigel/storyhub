@@ -60,7 +60,7 @@ export const registerHandler = async (
     });
 
     res.status(201).json({
-      status: 'success',
+      message: 'user created',
       data: {
         user
       }
