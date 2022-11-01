@@ -6,7 +6,7 @@ import {
   prop
 } from '@typegoose/typegoose';
 import { User } from './user';
-import mongoose from 'mongoose';
+import mongoose, { ObjectId } from 'mongoose';
 
 enum Status {
   public = 'public',
@@ -33,7 +33,7 @@ export class Story {
 
   // @prop({ ref: () => User })
   // public user?: Ref<User>;
-  @prop({ ref: 'User' })
+  @prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User' })
   public user?: Ref<User>;
 }
 

@@ -1,5 +1,3 @@
-// require('dotenv').config();
-// import { port } from './config';
 import config from 'config';
 import app from './app';
 

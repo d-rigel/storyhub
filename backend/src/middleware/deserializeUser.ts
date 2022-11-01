@@ -22,7 +22,7 @@ export const deserializeUser = async (
     }
 
     if (!access_token) {
-      return next(new AppError('You are not logged in', 401));
+      return next(new AppError('You are not logged in', 403));
     }
 
     // Validate Access Token
@@ -32,7 +32,7 @@ export const deserializeUser = async (
     );
 
     if (!decoded) {
-      return next(new AppError(`Invalid token or user doesn't exist`, 401));
+      return next(new AppError(`Invalid token or user doesn't exist`, 403));
     }
 
     // Check if user has a valid session

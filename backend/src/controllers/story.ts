@@ -74,7 +74,7 @@ export const getStoryByIdHanlder = async (
     const story = await findStoryById(id);
 
     if (!story) {
-      return next(new AppError('Story not found', 400));
+      return next(new AppError('Story not found', 404));
     }
     res.status(200).json({
       status: 'success',

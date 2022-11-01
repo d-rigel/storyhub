@@ -1,7 +1,6 @@
-import qs from "qs"
+import qs from 'qs';
 import config from 'config';
 import axios from 'axios';
-
 
 interface GoogleOauthToken {
   access_token: string;
@@ -13,7 +12,7 @@ interface GoogleOauthToken {
 }
 
 export const getGoogleOauthToken = async ({
-  code,
+  code
 }: {
   code: string;
 }): Promise<GoogleOauthToken> => {
@@ -24,7 +23,7 @@ export const getGoogleOauthToken = async ({
     client_id: config.get<string>('googleClientId'),
     client_secret: config.get<string>('googleClientSecret'),
     redirect_uri: config.get<string>('googleOauthRedirect'),
-    grant_type: 'authorization_code',
+    grant_type: 'authorization_code'
   };
   try {
     const { data } = await axios.post<GoogleOauthToken>(
@@ -32,8 +31,8 @@ export const getGoogleOauthToken = async ({
       qs.stringify(options),
       {
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
       }
     );
 
@@ -57,7 +56,7 @@ interface GoogleUserResult {
 
 export async function getGoogleUser({
   id_token,
-  access_token,
+  access_token
 }: {
   id_token: string;
   access_token: string;
@@ -67,8 +66,8 @@ export async function getGoogleUser({
       `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`,
       {
         headers: {
-          Authorization: `Bearer ${id_token}`,
-        },
+          Authorization: `Bearer ${id_token}`
+        }
       }
     );
 
@@ -78,4 +77,3 @@ export async function getGoogleUser({
     throw Error(err);
   }
 }
-

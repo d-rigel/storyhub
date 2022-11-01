@@ -23,7 +23,7 @@ router.post('/publish', validate(createStorySchema), createStoryHandler);
 // Get all stories  route
 router.get('/', getStoryHandler);
 
-// Get all stories  route
+// Get a story  route
 router.get('/:id', getStoryByIdHanlder);
 
 // Update a particular story
