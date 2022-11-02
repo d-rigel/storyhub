@@ -32,12 +32,13 @@ export const createStoryHandler = async (
 
     // const story = await createStory(req.body);
 
-    res.status(201).json({
-      status: 'success',
-      data: {
-        story
-      }
-    });
+    // res.status(201).json({
+    //   status: 'success',
+    //   data: {
+    //     story
+    //   }
+    // });
+    res.send(story);
   } catch (err: any) {
     next(err);
   }

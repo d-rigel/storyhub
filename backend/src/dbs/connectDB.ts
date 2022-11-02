@@ -9,7 +9,7 @@ const initializeDb = async () => {
     console.log('Database connected...');
   } catch (error: any) {
     console.log(error.message);
-    // setTimeout(initializeDb, 5000);
+    setTimeout(initializeDb, 5000);
   }
 };
 

@@ -60,7 +60,7 @@ export const registerHandler = async (
     });
 
     res.status(201).json({
-      message: 'user created',
+      status: 'success',
       data: {
         user
       }
@@ -312,7 +312,6 @@ export async function resetPasswordHandler(
 
     const { password } = req.body;
 
-    // const user = await findUserById(id);
     const user = await findUser({ id: req.params.id });
 
     if (

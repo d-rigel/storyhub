@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1667337622064" clover="3.2.0">
-  <project timestamp="1667337622065" name="All files">
-    <metrics statements="1408" coveredstatements="712" conditionals="30" coveredconditionals="18" methods="47" coveredmethods="11" elements="1485" coveredelements="741" complexity="0" loc="1408" ncloc="1408" packages="13" files="26" classes="26"/>
+<coverage generated="1667390956475" clover="3.2.0">
+  <project timestamp="1667390956476" name="All files">
+    <metrics statements="1411" coveredstatements="712" conditionals="30" coveredconditionals="18" methods="47" coveredmethods="11" elements="1488" coveredelements="741" complexity="0" loc="1411" ncloc="1411" packages="13" files="26" classes="26"/>
     <package name="config">
       <metrics statements="30" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="default.ts" path="C:\Users\SIR ALOZIE\Desktop\nodes\storyhub\backend\config\default.ts">
@@ -112,9 +112,9 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="555" coveredstatements="101" conditionals="1" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <metrics statements="558" coveredstatements="101" conditionals="1" coveredconditionals="0" methods="16" coveredmethods="0"/>
       <file name="auth.ts" path="C:\Users\SIR ALOZIE\Desktop\nodes\storyhub\backend\src\controllers\auth.ts">
-        <metrics statements="343" coveredstatements="67" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <metrics statements="344" coveredstatements="67" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -192,9 +192,9 @@
         <line num="75" count="0" type="stmt"/>
         <line num="76" count="0" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="79" count="1" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
         <line num="81" count="0" type="stmt"/>
         <line num="82" count="0" type="stmt"/>
         <line num="83" count="0" type="stmt"/>
@@ -231,18 +231,18 @@
         <line num="114" count="0" type="stmt"/>
         <line num="115" count="0" type="stmt"/>
         <line num="116" count="0" type="stmt"/>
-        <line num="117" count="1" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
         <line num="118" count="1" type="stmt"/>
         <line num="119" count="1" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
+        <line num="120" count="1" type="stmt"/>
         <line num="121" count="0" type="stmt"/>
         <line num="122" count="0" type="stmt"/>
         <line num="123" count="0" type="stmt"/>
         <line num="124" count="0" type="stmt"/>
         <line num="125" count="0" type="stmt"/>
-        <line num="126" count="1" type="stmt"/>
+        <line num="126" count="0" type="stmt"/>
         <line num="127" count="1" type="stmt"/>
-        <line num="128" count="0" type="stmt"/>
+        <line num="128" count="1" type="stmt"/>
         <line num="129" count="0" type="stmt"/>
         <line num="130" count="0" type="stmt"/>
         <line num="131" count="0" type="stmt"/>
@@ -295,9 +295,9 @@
         <line num="178" count="0" type="stmt"/>
         <line num="179" count="0" type="stmt"/>
         <line num="180" count="0" type="stmt"/>
-        <line num="181" count="1" type="stmt"/>
+        <line num="181" count="0" type="stmt"/>
         <line num="182" count="1" type="stmt"/>
-        <line num="183" count="0" type="stmt"/>
+        <line num="183" count="1" type="stmt"/>
         <line num="184" count="0" type="stmt"/>
         <line num="185" count="0" type="stmt"/>
         <line num="186" count="0" type="stmt"/>
@@ -310,9 +310,9 @@
         <line num="193" count="0" type="stmt"/>
         <line num="194" count="0" type="stmt"/>
         <line num="195" count="0" type="stmt"/>
-        <line num="196" count="1" type="stmt"/>
+        <line num="196" count="0" type="stmt"/>
         <line num="197" count="1" type="stmt"/>
-        <line num="198" count="0" type="stmt"/>
+        <line num="198" count="1" type="stmt"/>
         <line num="199" count="0" type="stmt"/>
         <line num="200" count="0" type="stmt"/>
         <line num="201" count="0" type="stmt"/>
@@ -373,10 +373,10 @@
         <line num="256" count="0" type="stmt"/>
         <line num="257" count="0" type="stmt"/>
         <line num="258" count="0" type="stmt"/>
-        <line num="259" count="1" type="stmt"/>
+        <line num="259" count="0" type="stmt"/>
         <line num="260" count="1" type="stmt"/>
         <line num="261" count="1" type="stmt"/>
-        <line num="262" count="0" type="stmt"/>
+        <line num="262" count="1" type="stmt"/>
         <line num="263" count="0" type="stmt"/>
         <line num="264" count="0" type="stmt"/>
         <line num="265" count="0" type="stmt"/>
@@ -418,8 +418,8 @@
         <line num="301" count="0" type="stmt"/>
         <line num="302" count="0" type="stmt"/>
         <line num="303" count="0" type="stmt"/>
-        <line num="304" count="1" type="stmt"/>
-        <line num="305" count="0" type="stmt"/>
+        <line num="304" count="0" type="stmt"/>
+        <line num="305" count="1" type="stmt"/>
         <line num="306" count="0" type="stmt"/>
         <line num="307" count="0" type="stmt"/>
         <line num="308" count="0" type="stmt"/>
@@ -456,11 +456,12 @@
         <line num="339" count="0" type="stmt"/>
         <line num="340" count="0" type="stmt"/>
         <line num="341" count="0" type="stmt"/>
-        <line num="342" count="1" type="stmt"/>
+        <line num="342" count="0" type="stmt"/>
         <line num="343" count="1" type="stmt"/>
+        <line num="344" count="1" type="stmt"/>
       </file>
       <file name="story.ts" path="C:\Users\SIR ALOZIE\Desktop\nodes\storyhub\backend\src\controllers\story.ts">
-        <metrics statements="171" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="173" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -505,9 +506,9 @@
         <line num="42" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="47" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
         <line num="48" count="0" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
@@ -526,10 +527,10 @@
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
         <line num="65" count="0" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="68" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="71" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
@@ -550,10 +551,10 @@
         <line num="87" count="0" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
         <line num="89" count="0" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="91" count="1" type="stmt"/>
-        <line num="92" count="0" type="stmt"/>
-        <line num="93" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="93" count="1" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
         <line num="95" count="0" type="stmt"/>
         <line num="96" count="0" type="stmt"/>
@@ -588,10 +589,10 @@
         <line num="125" count="0" type="stmt"/>
         <line num="126" count="0" type="stmt"/>
         <line num="127" count="0" type="stmt"/>
-        <line num="128" count="1" type="stmt"/>
-        <line num="129" count="1" type="stmt"/>
-        <line num="130" count="0" type="stmt"/>
-        <line num="131" count="0" type="stmt"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="1" type="stmt"/>
+        <line num="131" count="1" type="stmt"/>
         <line num="132" count="0" type="stmt"/>
         <line num="133" count="0" type="stmt"/>
         <line num="134" count="0" type="stmt"/>
@@ -609,10 +610,10 @@
         <line num="146" count="0" type="stmt"/>
         <line num="147" count="0" type="stmt"/>
         <line num="148" count="0" type="stmt"/>
-        <line num="149" count="1" type="stmt"/>
-        <line num="150" count="1" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
-        <line num="152" count="0" type="stmt"/>
+        <line num="149" count="0" type="stmt"/>
+        <line num="150" count="0" type="stmt"/>
+        <line num="151" count="1" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
         <line num="153" count="0" type="stmt"/>
         <line num="154" count="0" type="stmt"/>
         <line num="155" count="0" type="stmt"/>
@@ -632,6 +633,8 @@
         <line num="169" count="0" type="stmt"/>
         <line num="170" count="0" type="stmt"/>
         <line num="171" count="0" type="stmt"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="173" count="0" type="stmt"/>
       </file>
       <file name="user.ts" path="C:\Users\SIR ALOZIE\Desktop\nodes\storyhub\backend\src\controllers\user.ts">
         <metrics statements="41" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>

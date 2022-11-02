@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.2% </span>
+                <span class="strong">15.02% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/171</span>
+                <span class='fraction'>26/173</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.2% </span>
+                <span class="strong">15.02% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/171</span>
+                <span class='fraction'>26/173</span>
             </div>
         
             
@@ -234,7 +234,9 @@
 <a name='L169'></a><a href='#L169'>169</a>
 <a name='L170'></a><a href='#L170'>170</a>
 <a name='L171'></a><a href='#L171'>171</a>
-<a name='L172'></a><a href='#L172'>172</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -278,8 +280,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -439,12 +443,13 @@ export const createStoryHandler = <span class="fstat-no" title="function not cov
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >    // const story = await createStory(req.body);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >    res.status(201).json({</span>
-<span class="cstat-no" title="statement not covered" >      status: 'success',</span>
-<span class="cstat-no" title="statement not covered" >      data: {</span>
-<span class="cstat-no" title="statement not covered" >        story</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    // res.status(201).json({</span>
+<span class="cstat-no" title="statement not covered" >    //   status: 'success',</span>
+<span class="cstat-no" title="statement not covered" >    //   data: {</span>
+<span class="cstat-no" title="statement not covered" >    //     story</span>
+<span class="cstat-no" title="statement not covered" >    //   }</span>
+<span class="cstat-no" title="statement not covered" >    // });</span>
+<span class="cstat-no" title="statement not covered" >    res.send(story);</span>
 <span class="cstat-no" title="statement not covered" >  } catch (err: any) {</span>
 <span class="cstat-no" title="statement not covered" >    next(err);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -460,12 +465,13 @@ export const getStoryHandler = <span class="fstat-no" title="function not covere
 <span class="cstat-no" title="statement not covered" >    if (!stories) {</span>
 <span class="cstat-no" title="statement not covered" >      return next(new AppError('Stories not found', 400));</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    res.status(200).json({</span>
-<span class="cstat-no" title="statement not covered" >      status: 'success',</span>
-<span class="cstat-no" title="statement not covered" >      data: {</span>
-<span class="cstat-no" title="statement not covered" >        stories</span>
-<span class="cstat-no" title="statement not covered" >      }</span>
-<span class="cstat-no" title="statement not covered" >    });</span>
+<span class="cstat-no" title="statement not covered" >    // res.status(200).json({</span>
+<span class="cstat-no" title="statement not covered" >    //   status: 'success',</span>
+<span class="cstat-no" title="statement not covered" >    //   data: {</span>
+<span class="cstat-no" title="statement not covered" >    //     stories</span>
+<span class="cstat-no" title="statement not covered" >    //   }</span>
+<span class="cstat-no" title="statement not covered" >    // });</span>
+<span class="cstat-no" title="statement not covered" >    return res.send(stories);</span>
 <span class="cstat-no" title="statement not covered" >  } catch (err: any) {</span>
 <span class="cstat-no" title="statement not covered" >    next(err);</span>
 <span class="cstat-no" title="statement not covered" >  }</span>
@@ -583,7 +589,7 @@ export const getStoryByOneUserHanlder = <span class="fstat-no" title="function n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-11-01T21:20:21.560Z
+                at 2022-11-02T12:09:16.031Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

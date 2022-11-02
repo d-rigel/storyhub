@@ -17,9 +17,11 @@ export const storyPayload = {
 };
 
 export const userPayload = {
-  _id: userId,
-  email: 'run@gmail.com',
-  name: 'run user'
+  // _id: userId,
+
+  _id: '635c247c4b6c8ca1ef7ce107',
+  name: 'run user',
+  email: 'run@gmail.com'
 };
 
 describe('story', () => {
@@ -88,19 +90,16 @@ describe('story', () => {
 
         expect(statusCode).toBe(201);
 
-        // expect(body).toEqual({
-        //   __v: 0,
-        //   _id: expect.any(String),
-        //   createdAt: expect.any(String),
-        //   description:
-        //     "Designed for first-time DSLR owners who want impressive results straight out of the box, capture those magic moments no matter your level with the EOS 1500D. With easy to use automatic shooting modes, large 24.1 MP sensor, Canon Camera Connect app integration and built-in feature guide, EOS 1500D is always ready to go.",
-        //   image: "https://i.imgur.com/QlRphfQ.jpg",
-        //   price: 879.99,
-        //   productId: expect.any(String),
-        //   title: "Canon EOS 1500D DSLR Camera with 18-55mm Lens",
-        //   updatedAt: expect.any(String),
-        //   user: expect.any(String),
-        // });
+        expect(body).toEqual({
+          _id: expect.any(String),
+          title: 'Story three by Run',
+          story: 'This is story three by Run',
+          status: 'private',
+          user: expect.any(String),
+          createdAt: expect.any(String),
+          updatedAt: expect.any(String),
+          _v: 0
+        });
       });
     });
   });
