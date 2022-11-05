@@ -33,7 +33,7 @@ describe('user', () => {
           .post('/api/auth/register')
           .send(userInput);
 
-        expect(statusCode).toBe(200);
+        expect(statusCode).toBe(201);
 
         expect(body).toEqual(userPayload);
 

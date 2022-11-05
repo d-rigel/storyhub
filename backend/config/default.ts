@@ -26,5 +26,20 @@ export default {
   logLevel: 'info',
 
   mongoAppUrl: `mongodb://${process.env.MONGO_LOCAL_PORT}/${process.env.MONGO_LOCAL_NAME}`,
-  environment: process.env.NODE_ENV
+  environment: process.env.NODE_ENV,
+  swaggerOptions: {
+    swaggerDefinition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Library API',
+        version: '1.0.0'
+      }
+    },
+    apis: ['../src/routes/*/*.ts', '../src/routes/*/*.js'],
+    servers: [
+      {
+        url: `http://localhost:8000`
+      }
+    ]
+  }
 };
